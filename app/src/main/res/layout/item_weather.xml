@@ -8,14 +8,16 @@
     <ImageView
         android:id="@+id/tempIV"
         android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:background="@color/black"
+        android:layout_marginRight="8dp"
+        android:layout_height="80dp"
         android:src="@drawable/ic_10k"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_weight="2.5"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/dateTV"
@@ -40,7 +42,7 @@
     <LinearLayout
         android:layout_weight="1.5"
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/maxTempTV"
