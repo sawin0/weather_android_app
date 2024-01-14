@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,10 +32,10 @@ public class WeatherAdapter extends
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.item_weather, parent, false);
+        View weatherView = inflater.inflate(R.layout.item_weather, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(contactView);
+        ViewHolder viewHolder = new ViewHolder(weatherView);
         return viewHolder;
     }
 
@@ -47,7 +48,7 @@ public class WeatherAdapter extends
         // Set item views based on your views and data model
         TextView textView = holder.nameTextView;
 //        textView.setText(weather.);
-        Button button = holder.messageButton;
+        Button button = holder.message;
 //        button.setText(weather);
 //        button.setEnabled(weather);
     }
@@ -63,8 +64,13 @@ public class WeatherAdapter extends
     public class ViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
-        public TextView nameTextView;
-        public Button messageButton;
+        public ImageView tempIV;
+        public TextView dateTV;
+        public TextView tempStatusTV;
+        public TextView maxTempTV;
+        public TextView minTempTV;
+
+
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
