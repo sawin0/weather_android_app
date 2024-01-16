@@ -46,11 +46,16 @@ public class WeatherAdapter extends
         Weather weather = weatherList.get(position);
 
         // Set item views based on your views and data model
-        TextView textView = holder.nameTextView;
-//        textView.setText(weather.);
-        Button button = holder.message;
-//        button.setText(weather);
-//        button.setEnabled(weather);
+        ImageView tempIV = holder.tempIV;
+        //TODO: load image using Glide
+        TextView dateTV = holder.dateTV;
+        dateTV.setText(weather.day);
+        TextView tempStatusTV = holder.tempStatusTV;
+        tempStatusTV.setText(weather.status);
+        TextView maxTempTV = holder.maxTempTV;
+        maxTempTV.setText(weather.maxTemp);
+        TextView minTempTV = holder.minTempTV;
+        minTempTV.setText(weather.minTemp);
     }
 
     // Returns the total count of items in the list
@@ -71,13 +76,17 @@ public class WeatherAdapter extends
         public TextView minTempTV;
 
 
-
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
         public ViewHolder(View itemView) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
+            tempIV = itemView.findViewById(R.id.tempIV);
+            dateTV = itemView.findViewById(R.id.dateTV);
+            tempStatusTV = itemView.findViewById(R.id.tempStatusTV);
+            maxTempTV = itemView.findViewById(R.id.maxTempTV);
+            minTempTV = itemView.findViewById(R.id.minTempTV);
 
 //            nameTextView = (TextView) itemView.findViewById(R.id.contact_name);
 //            messageButton = (Button) itemView.findViewById(R.id.message_button);
