@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 // Create the basic adapter extending from RecyclerView.Adapter
@@ -19,10 +21,12 @@ public class WeatherAdapter extends
 
     // Store a member variable for the contacts
     private List<Weather> weatherList;
+    private Context context;
 
     // Pass in the contact array into the constructor
-    public WeatherAdapter(List<Weather> weathers) {
+    public WeatherAdapter(List<Weather> weathers, Context mContext) {
         weatherList = weathers;
+        context = mContext;
     }
 
     // Usually involves inflating a layout from XML and returning the holder
@@ -47,6 +51,8 @@ public class WeatherAdapter extends
 
         // Set item views based on your views and data model
         ImageView tempIV = holder.tempIV;
+        Glide.with(context).load("https://goo.gl/gEgYUd").into(tempIV);
+
         //TODO: load image using Glide
         TextView dateTV = holder.dateTV;
         dateTV.setText(weather.day);

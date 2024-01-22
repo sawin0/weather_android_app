@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         dateTV.setText("Today "+formattedDate);
 
         ImageView tempIV = findViewById(R.id.tempIV);
-        Glide.with(this).load("https://goo.gl/gEgYUd").into(tempIV);
+        Glide.with(getApplicationContext()).load("https://goo.gl/gEgYUd").into(tempIV);
 
 
         // creating dummy weather data list
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize contacts
 //        contacts = Weather.createContactsList(20);
         // Create adapter passing in the sample user data
-        WeatherAdapter adapter = new WeatherAdapter(weatherList);
+        WeatherAdapter adapter = new WeatherAdapter(weatherList, this);
         // Attach the adapter to the recyclerview to populate items
         weatherRV.setAdapter(adapter);
         // Set layout manager to position the items
