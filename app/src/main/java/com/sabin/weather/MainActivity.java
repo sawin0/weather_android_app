@@ -5,10 +5,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        fetchWeather();
 
         Date c = Calendar.getInstance().getTime();
         System.out.println("Current time => " + c);
@@ -46,10 +59,6 @@ public class MainActivity extends AppCompatActivity {
         weatherList.add(new Weather("", "today", "clear", "70", "35"));
         weatherList.add(new Weather("", "today", "clear", "70", "35"));
 
-
-
-
-
         // Lookup the recyclerview in activity layout
         RecyclerView weatherRV = (RecyclerView) findViewById(R.id.weatherRV);
 
@@ -62,6 +71,53 @@ public class MainActivity extends AppCompatActivity {
         // Set layout manager to position the items
         weatherRV.setLayoutManager(new LinearLayoutManager(this));
         // That's all!
+    }
 
+
+    void fetchWeather(){
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "https://api.openweathermap.org/data/2.5/forecast?id=1282898&APPID=4e3152b2aefeafe6ddfa1495aceb550e&units=metric";
+
+// Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        //textView.setText("Response is: " + response.substring(0,500));
+                        Log.d("fetchWeather",response.toString());
+                        JSONObject responseObject = null;
+                        try {
+                            responseObject = new JSONObject(response);
+                            JSONArray weatherList = responseObject.getJSONArray("list");
+                            Log.d("TAG", "onResponse: weatherList: " + weatherList.toString());
+                            // Iterate through the weather list
+//                            for (int i = 0; i < weatherList.length(); i++) {
+//                                JSONObject weatherObject = weatherList.getJSONObject(i);
+//
+//                                // Extract relevant information for each entry
+//                                String dateTime = weatherObject.getString("dt_txt");
+//                                JSONObject mainObject = weatherObject.getJSONObject("main");
+//                                double temperature = mainObject.getDouble("temp");
+//
+//                                // Handle the extracted information as needed
+//                                // You can update your UI or perform other actions here
+//                            }
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("fetchWeather","That didn't work!");
+            }
+        });
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
     }
 }

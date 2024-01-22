@@ -43,4 +43,8 @@ dependencies {
     // glide for showing internet images
     implementation 'com.github.bumptech.glide:glide:4.16.0'
 
+    // volley for API implementation
+    implementation 'com.android.volley:volley:1.2.1'
+
+
 }

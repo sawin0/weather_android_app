@@ -1,5 +1,7 @@
 package com.sabin.weather;
 
+import java.util.ArrayList;
+
 public class Weather {
     String imageUrl;
     String day;
@@ -16,3 +18,9 @@ public class Weather {
         this.minTemp = minTemp;
     }
 }
+
+//public class Rain{
+//    @JsonProperty("3h")
+//    public double _3h;
+//}
+
