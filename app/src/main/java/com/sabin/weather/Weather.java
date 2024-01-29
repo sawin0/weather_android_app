@@ -11,7 +11,7 @@ public class Weather {
 
 
     public Weather(String imageUrl, String day, String status, String maxTemp, String minTemp) {
-        this.imageUrl = imageUrl;
+        this.imageUrl = "https://openweathermap.org/img/wn/"+ imageUrl + "@2x.png";
         this.day = day;
         this.status = status;
         this.maxTemp = maxTemp;

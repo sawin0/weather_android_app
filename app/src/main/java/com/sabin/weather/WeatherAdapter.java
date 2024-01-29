@@ -51,7 +51,7 @@ public class WeatherAdapter extends
 
         // Set item views based on your views and data model
         ImageView tempIV = holder.tempIV;
-        Glide.with(context).load("https://goo.gl/gEgYUd").into(tempIV);
+        Glide.with(context).load(weather.imageUrl).into(tempIV);
 
         //TODO: load image using Glide
         TextView dateTV = holder.dateTV;
