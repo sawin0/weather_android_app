@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     List<Weather> weatherListData = new ArrayList<>();
     private ProgressBar loadingSpinner;
 
+    //TODO: change API key
+    private final String API_KEY = "";
+    private final String url = "https://api.openweathermap.org/data/2.5/forecast?id=1282898&APPID=" + API_KEY + "&units=metric";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
     void fetchWeather() {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://api.openweathermap.org/data/2.5/forecast?id=1282898&APPID=4e3152b2aefeafe6ddfa1495aceb550e&units=metric";
 
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
