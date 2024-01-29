@@ -102,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
                             throw new RuntimeException(e);
                         }
                         setUpData();
-                        setUpRV();
 
 
                     }
@@ -127,6 +126,10 @@ public class MainActivity extends AppCompatActivity {
 
         maxTempTV.setText(weatherListData.get(0).maxTemp);
         minTemTV.setText(weatherListData.get(0).minTemp);
+
+        // removing first weather data
+        weatherListData.remove(0);
+        setUpRV();
     }
 
     void setUpRV(){
