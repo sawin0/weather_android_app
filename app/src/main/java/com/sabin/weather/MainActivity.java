@@ -50,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
         TextView dateTV = findViewById(R.id.dateTV);
         dateTV.setText("Today "+formattedDate);
 
-        ImageView tempIV = findViewById(R.id.tempIV);
-        Glide.with(getApplicationContext()).load("https://goo.gl/gEgYUd").into(tempIV);
+
 
 
         // creating dummy weather data list
@@ -102,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
+                        setUpData();
                         setUpRV();
 
 
@@ -117,9 +117,21 @@ public class MainActivity extends AppCompatActivity {
         queue.add(stringRequest);
     }
 
+    void setUpData(){
+
+        ImageView tempIV = findViewById(R.id.tempIV);
+        Glide.with(getApplicationContext()).load(weatherListData.get(0).imageUrl).into(tempIV);
+
+        TextView maxTempTV = findViewById(R.id.maxTempTV);
+        TextView minTemTV = findViewById(R.id.minTempTV);
+
+        maxTempTV.setText(weatherListData.get(0).maxTemp);
+        minTemTV.setText(weatherListData.get(0).minTemp);
+    }
+
     void setUpRV(){
         // Lookup the recyclerview in activity layout
-        RecyclerView weatherRV = (RecyclerView) findViewById(R.id.weatherRV);
+        RecyclerView weatherRV =  findViewById(R.id.weatherRV);
 
         // Initialize contacts
 //        contacts = Weather.createContactsList(20);
