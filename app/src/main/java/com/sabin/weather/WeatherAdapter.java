@@ -59,9 +59,9 @@ public class WeatherAdapter extends
         TextView tempStatusTV = holder.tempStatusTV;
         tempStatusTV.setText(weather.status);
         TextView maxTempTV = holder.maxTempTV;
-        maxTempTV.setText(weather.maxTemp);
+        maxTempTV.setText(weather.maxTemp + "°");
         TextView minTempTV = holder.minTempTV;
-        minTempTV.setText(weather.minTemp);
+        minTempTV.setText(weather.minTemp + "°");
     }
 
     // Returns the total count of items in the list

@@ -35,9 +35,10 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
-<!--    <Space-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"/>-->
+    <Space
+        android:layout_weight="0.5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
         android:layout_weight="1.5"

@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -31,12 +33,16 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     List<Weather> weatherListData = new ArrayList<>();
+    private ProgressBar loadingSpinner;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loadingSpinner = findViewById(R.id.loadingSpinner);
+
+        loadingSpinner.setVisibility(View.VISIBLE);
 
         fetchWeather();
 
@@ -124,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
         TextView maxTempTV = findViewById(R.id.maxTempTV);
         TextView minTemTV = findViewById(R.id.minTempTV);
 
-        maxTempTV.setText(weatherListData.get(0).maxTemp);
-        minTemTV.setText(weatherListData.get(0).minTemp);
+        maxTempTV.setText(weatherListData.get(0).maxTemp + "°");
+        minTemTV.setText(weatherListData.get(0).minTemp + "°");
 
         // removing first weather data
         weatherListData.remove(0);
@@ -145,5 +151,8 @@ public class MainActivity extends AppCompatActivity {
         // Set layout manager to position the items
         weatherRV.setLayoutManager(new LinearLayoutManager(this));
         // That's all!
+
+        // hiding progressbar
+        loadingSpinner.setVisibility(View.GONE);
     }
 }
