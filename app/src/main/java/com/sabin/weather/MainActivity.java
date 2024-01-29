@@ -1,15 +1,15 @@
 package com.sabin.weather;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -54,9 +54,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("formattedDate => " + formattedDate);
 
         TextView dateTV = findViewById(R.id.dateTV);
-        dateTV.setText("Today "+formattedDate);
-
-
+        dateTV.setText("Today " + formattedDate);
 
 
         // creating dummy weather data list
@@ -68,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    void fetchWeather(){
+    void fetchWeather() {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "https://api.openweathermap.org/data/2.5/forecast?id=1282898&APPID=4e3152b2aefeafe6ddfa1495aceb550e&units=metric";
@@ -114,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("fetchWeather","That didn't work!");
+                Log.d("fetchWeather", "That didn't work!");
             }
         });
 
@@ -122,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         queue.add(stringRequest);
     }
 
-    void setUpData(){
+    void setUpData() {
 
         ImageView tempIV = findViewById(R.id.tempIV);
         Glide.with(getApplicationContext()).load(weatherListData.get(0).imageUrl).into(tempIV);
@@ -138,9 +136,9 @@ public class MainActivity extends AppCompatActivity {
         setUpRV();
     }
 
-    void setUpRV(){
+    void setUpRV() {
         // Lookup the recyclerview in activity layout
-        RecyclerView weatherRV =  findViewById(R.id.weatherRV);
+        RecyclerView weatherRV = findViewById(R.id.weatherRV);
 
         // Initialize contacts
 //        contacts = Weather.createContactsList(20);
