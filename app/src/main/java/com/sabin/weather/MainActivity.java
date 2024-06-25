@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar loadingSpinner;
 
     //TODO: change API key
-    private final String API_KEY = "";
+    private final String API_KEY = "4e3152b2aefeafe6ddfa1495aceb550e";
     private final String url = "https://api.openweathermap.org/data/2.5/forecast?id=1282898&APPID=" + API_KEY + "&units=metric";
 
 
